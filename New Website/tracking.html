@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Craft - Tracking</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <!-- Logo Link -->
+        <a href="index.html">
+            <img src="Images/logo.png" alt="CalorieCraft Logo" class="logo">
+        </a>
+
+        <!-- Page Links -->
+        <ul class="nav-links">
+            <li><a href="meal-planner.html">Meal Planner</a></li>
+            <li><a href="tracking.html">Tracking</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section>
+    <div class="container tracking-dashboard">
+        <div class="food-tracking">
+            <h1>Log Your Meals</h1>
+            <form>
+                <label for="food-name">Food Name:</label>
+                <input type="text" id="food-name" name="food-name">
+                <label for="calories">Calories:</label>
+                <input type="number" id="calories" name="calories">
+                <label for="carbs">Carbs (g):</label>
+                <input type="number" id="carbs" name="carbs">
+                <label for="protein">Protein (g):</label>
+                <input type="number" id="protein" name="protein">
+                <label for="fat">Fat (g):</label>
+                <input type="number" id="fat" name="fat">
+                <button type="submit">Log Food</button>
+            </form>
+        </div>
+
+        <div class="charts-stack">
+            <div class="tracking-chart-wrapper">
+                <canvas id="caloriePieChartTracking"></canvas>
+            </div>
+
+            <div class="tracking-chart-wrapper">
+                <canvas id="weightLineChartTracking"></canvas>
+            </div>
+
+            <div class="tracking-chart-wrapper">
+                <canvas id="macroBarChartTracking"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Calorie Craft. All rights reserved.</p>
+</footer>
+
+<script>
+    // Pie Chart for Calories (Tracking)
+    const caloriePieChartTracking = new Chart(document.getElementById('caloriePieChartTracking'), {
+        type: 'pie',
+        data: {
+            labels: ['Calories Consumed', 'Calories Remaining'],
+            datasets: [{
+                data: [1200, 800],
+                backgroundColor: ['#36A2EB', '#FF6384']
+            }]
+        }
+    });
+
+    // Line Chart for Weight Progress (Tracking)
+    const weightLineChartTracking = new Chart(document.getElementById('weightLineChartTracking'), {
+        type: 'line',
+        data: {
+            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+            datasets: [{
+                label: 'Weight (lbs)',
+                data: [190, 189, 188, 187, 186],
+                borderColor: '#36A2EB',
+                fill: false
+            }]
+        }
+    });
+
+    // Bar Chart for Macros (Tracking)
+    const macroBarChartTracking = new Chart(document.getElementById('macroBarChartTracking'), {
+        type: 'bar',
+        data: {
+            labels: ['Carbs', 'Protein', 'Fat'],
+            datasets: [{
+                label: 'Macros (g)',
+                data: [230, 110, 90],
+                backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56']
+            }]
+        }
+    });
+</script>
+
+</body>
+</html>
