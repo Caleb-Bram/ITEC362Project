@@ -15,7 +15,7 @@ h1 {
     display: flex;
     align-items: center;
     background-color: white;
-    padding: 1rem;
+    padding: 30px;
 }
 
 .logo {
@@ -49,7 +49,7 @@ h1 {
 }
 
 section {
-    padding: 2rem;
+    padding: 60px;
 }
 
 /* Home Page Chart Styles */
@@ -68,7 +68,7 @@ section {
 
 .home-chart-wrapper canvas {
     width: 300px !important;
-    height: 300px !important; /* Set a specific height for home charts */
+    height: 300px !important; /* Sets a specific height for home charts */
 }
 
 /* Tracking Page Chart Styles */
@@ -76,11 +76,11 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    height: 100vh; /* Makes sure the page stretches vertically */
+    height: 1000px;
 }
 
 .food-tracking {
-    width: 45%;
+    width: 55%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -89,7 +89,7 @@ section {
 .food-tracking form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 30px;
 }
 
 .food-tracking input, .food-tracking button {
@@ -102,7 +102,7 @@ section {
 .charts-stack {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 35%;
 }
 
 .tracking-chart-wrapper {
@@ -114,13 +114,13 @@ section {
 
 .tracking-chart-wrapper canvas {
     width: 300px !important;
-    height: 200px !important; /* Ensure all tracking charts are of equal height */
+    height: 300px !important; /* Ensures all tracking charts are equal heights */
 }
 
-/* Footer (remains the same) */
+/* Footer */
 footer {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 1rem;
+    padding: 30px;
 }
