@@ -23,10 +23,10 @@
 <body>
 
 <header>
-    <nav class="navbar">
+    <nav id="navbar">
         <!-- Logo Link -->
         <a href="index.html">
-            <img src="Images/logo.png" alt="CalorieCraft Logo" class="logo">
+            <img src="Images/logo.png" alt="CalorieCraft Logo" id="logo">
         </a>
 
         <!-- Page Links -->
@@ -44,14 +44,15 @@
         
         <!-- AI Chatbox Placeholder -->
         <div class="chatbox">
-            <p><strong>CraftGPT:</strong></p>
-            <textarea rows="5" cols="50" placeholder="Enter your meal preferences here..."></textarea>
+            <label for="meal-preferences">CraftGPT:</label><br>
+            <textarea id="meal-preferences" rows="5" cols="50" placeholder="Enter your meal preferences here..."></textarea><br>
             <button>Submit</button>
         </div>
-
+        
+        
         <!-- Sample Meal Plan Overview -->
         <div class="meal-plan-overview">
-            <h3>Sample Meal Plan for Today</h3>
+            <h2>Sample Meal Plan for Today</h2>
             <ul>
                 <li><strong>Breakfast:</strong> Oatmeal with fruit (300 kcal)</li>
                 <li><strong>Lunch:</strong> Grilled chicken salad (500 kcal)</li>
