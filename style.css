@@ -18,14 +18,14 @@ h2 {
 }
 
 /* Navbar styling */
-.navbar {
+#navbar {
     display: flex;
     align-items: center;
     background-color: white;
     padding: 30px;
 }
 
-.logo {
+#logo {
     width: 90px;
     height: auto;
     margin-right: 50px;
