@@ -39,25 +39,43 @@
 
 <section>
     <div class="container">
-        <h1>Meal Planner</h1>
+        <h1>CraftGPT</h1>
         <p>Use the AI chatbox below to generate meal plans based on your preferences:</p>
         
         <!-- AI Chatbox Placeholder -->
         <div class="chatbox">
-            <label for="meal-preferences">CraftGPT:</label><br>
-            <textarea id="meal-preferences" rows="5" cols="50" placeholder="Enter your meal preferences here..."></textarea><br>
-            <button>Submit</button>
+            <div class="chat-container">
+                <div id="chatbox" class="chatbox">
+                  <!-- Messages will appear here -->
+                </div>
+                <div class="input-area">
+                  <input type="text" id="messageInput" placeholder="Ask AI" />
+                  <button onclick="sendMessage()">Generate</button>
+                </div>
+            </div>
+            <script src="script.js"></script>
         </div>
         
         
         <!-- Sample Meal Plan Overview -->
         <div class="meal-plan-overview">
-            <h2>Sample Meal Plan for Today</h2>
+            <h2>Your Plan:</h2>
+            <img src="Images/Yogurt.jpg" alt="Yogurt" id="foodImgs">
+            <img src="Images/Chicken.jpg" alt="Chicken" id="foodImgs">
+            <img src="Images/Salmon.jpg" alt="Salmon" id="foodImgs">
             <ul>
-                <li><strong>Breakfast:</strong> Oatmeal with fruit (300 kcal)</li>
-                <li><strong>Lunch:</strong> Grilled chicken salad (500 kcal)</li>
-                <li><strong>Snack:</strong> Greek yogurt with almonds (200 kcal)</li>
-                <li><strong>Dinner:</strong> Salmon with quinoa and vegetables (600 kcal)</li>
+                <li class="foodItm">
+                    <strong>Breakfast:</strong> Oatmeal with fruit (300 kcal)
+                </li>
+                <li class="foodItm">
+                    <strong>Lunch:</strong> Grilled chicken salad (500 kcal)
+                </li>
+                <li class="foodItm">
+                    <strong>Snack:</strong> Greek yogurt with almonds (200 kcal)
+                </li>
+                <li class="foodItm">
+                    <strong>Dinner:</strong> Salmon with quinoa and vegetables (600 kcal)
+                </li>
             </ul>
         </div>
     </div>
