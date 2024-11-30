@@ -48,3 +48,30 @@ const calorieTrackingPieChart = new Chart(document.getElementById('calorieTracki
     type: 'pie',
     data: calorieData
 });
+
+//Chatbox
+function sendMessage() {
+    const chatbox = document.getElementById('chatbox');
+    const messageInput = document.getElementById('messageInput');
+  
+    // Get the message text
+    const messageText = messageInput.value;
+  
+    // Check if the input is not empty
+    if (messageText.trim() !== "") {
+      // Create a new message element
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('message');
+      messageElement.textContent = messageText;
+  
+      // Append the message to the chatbox
+      chatbox.appendChild(messageElement);
+  
+      // Scroll to the bottom of the chatbox
+      chatbox.scrollTop = chatbox.scrollHeight;
+  
+      // Clear the input field
+      messageInput.value = "";
+    }
+  }
+  
