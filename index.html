@@ -72,27 +72,54 @@
 </footer>
 
 <script>
-    // Pie Chart for Calories
-    const caloriePieChart = new Chart(document.getElementById('caloriePieChart'), {
-        type: 'pie',
-        data: {
-            labels: ['Calories Consumed', 'Calories Remaining'],
-            datasets: [{
-                data: [1500, 500],
-                backgroundColor: ['#36A2EB', '#FF6384']
-            }]
+//Doughnut Chart for Calories
+const calorieDoughnutChart = new Chart(document.getElementById('caloriePieChart'), {
+    type: 'doughnut',
+    data: {
+        labels: ['Calories Consumed', 'Calories Remaining'],
+        datasets: [{
+            data: [750, 1250],
+            backgroundColor: ['#FF6D6D', '#FFF4E7']
+        }]
+    },
+    options: {
+        cutout: '60%', //Adjust thickness of the doughnut
+        plugins: {
+            //Plugin to add text in the center
+            legend: {
+                display: false // Hide the legend if needed
+            }
         }
-    });
+    },
+    plugins: [{
+        id: 'centerText',
+        beforeDraw: (chart) => {
+            const { width, height, ctx } = chart;
+            ctx.restore();
+            const fontSize = (height / 10).toFixed(2);
+            ctx.font = `${fontSize}px sans-serif`;
+            ctx.textBaseline = 'middle';
+
+            const text = '1250';
+            const textX = Math.round((width - ctx.measureText(text).width) / 2);
+            const textY = height / 2;
+
+            ctx.fillText(text, textX, textY);
+            ctx.save();
+        }
+    }]
+});
+
 
     // Line Chart for Weight Progress
     const weightLineChart = new Chart(document.getElementById('weightLineChart'), {
         type: 'line',
         data: {
-            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
             datasets: [{
-                label: 'Weight (lbs)',
-                data: [192, 191, 190, 189, 188],
-                borderColor: '#36A2EB',
+                label: 'Weight Progress',
+                data: [192, 192.5, 191.5, 190, 189.5],
+                borderColor: '#black',
                 fill: false
             }]
         }
@@ -100,16 +127,41 @@
 
     // Bar Chart for Macros
     const macroBarChart = new Chart(document.getElementById('macroBarChart'), {
-        type: 'bar',
-        data: {
-            labels: ['Carbs', 'Protein', 'Fat'],
-            datasets: [{
-                label: 'Macros (g)',
-                data: [250, 120, 80],
-                backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56']
-            }]
+    type: 'bar',
+    data: {
+        labels: ['Carbs', 'Protein', 'Fat'],
+        datasets: [{
+            label: 'Macros (g)',
+            data: [250, 120, 80],
+            backgroundColor: ['#22A720', '#EE4F4F', '#E7A805'],
+            borderRadius: 30 // Rounded corners
+        }]
+    },
+    options: {
+        indexAxis: 'y', // Makes the chart horizontal
+        scales: {
+            x: {
+                beginAtZero: true,
+                grid: {
+                    display: false
+                },
+                ticks: {
+                    display: false
+                }
+            },
+            y: {
+                grid: {
+                    display: false
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                display: false
+            }
         }
-    });
+    }
+});
 </script>
 
 </body>
