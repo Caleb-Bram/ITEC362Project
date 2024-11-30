@@ -17,6 +17,21 @@ h2 {
     font-size: 15pt;
 }
 
+/* Food List */
+.foodItm {
+    display: flex; /* Aligns items horizontally */
+    align-items: center; /* Vertically aligns items */
+    margin-bottom: 15px; /* Adds space between list items */
+}
+
+#foodImgs {
+    display: flex; /* Aligns items horizontally */
+    width: 160px;
+    height: 160px;
+    border-radius: 10px;
+    margin-right: 50px;
+}
+  
 /* Navbar styling */
 #navbar {
     display: flex;
@@ -123,11 +138,62 @@ section {
     width: 300px !important;
     height: 300px !important; /* Ensures all tracking charts are equal heights */
 }
+  
+/* Chatbox */
+.chat-container {
+    width: 100%;
+    max-width: 400px; /* Adjust width as needed */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .chat-messages {
+    height: 300px; /* Set the desired height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+  }
+  
+  .input-area {
+    display: flex;
+    padding: 10px;
+    background-color: #fff;
+  }
+  
+  .input-area input[type="text"] {
+    flex-grow: 1;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  
+  .input-area button {
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .input-area button:hover {
+    background-color: #3e4042;
+  }    
 
 /* Footer */
 footer {
-    background-color: #333;
-    color: white;
+    background-color: white;
+    color: black;
     text-align: center;
     padding: 30px;
 }
