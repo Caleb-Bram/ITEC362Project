@@ -73,6 +73,7 @@
                         </div>
                     </div>
                     <script>
+
                         // Pie Chart for Calories (Tracking)
                         const caloriePieChartTracking = new Chart(document.getElementById('caloriePieChartTracking'), {
                             type: 'doughnut',
@@ -86,13 +87,12 @@
                             options: {
                                 cutout: '60%', //Adjust thickness of the doughnut
                                 plugins: {
-                                    //Plugin to add text in the center
                                     legend: {
-                                        display: false // Hide the legend if needed
+                                        display: false
                                     }
                                 }
                             },
-                            plugins: [{
+                            plugins: [{ //Plugin to add text in the center
                                 id: 'centerText',
                                 beforeDraw: (chart) => {
                                     const { width, height, ctx } = chart;
