@@ -53,25 +53,27 @@ const calorieTrackingPieChart = new Chart(document.getElementById('calorieTracki
 function sendMessage() {
     const chatbox = document.getElementById('chatbox');
     const messageInput = document.getElementById('messageInput');
-  
-    // Get the message text
-    const messageText = messageInput.value;
-  
-    // Check if the input is not empty
-    if (messageText.trim() !== "") {
-      // Create a new message element
-      const messageElement = document.createElement('div');
-      messageElement.classList.add('message');
-      messageElement.textContent = messageText;
-  
-      // Append the message to the chatbox
-      chatbox.appendChild(messageElement);
-  
-      // Scroll to the bottom of the chatbox
-      chatbox.scrollTop = chatbox.scrollHeight;
-  
-      // Clear the input field
-      messageInput.value = "";
+    const userMessage = messageInput.value;
+
+    if (userMessage.trim()) {
+        // Create user message bubble
+        const userBubble = document.createElement("div");
+        userBubble.classList.add("message", "user");
+        userBubble.textContent = userMessage;
+        chatbox.appendChild(userBubble);
+
+        // Clear input field
+        messageInput.value = "";
+
+        // Simulate bot response
+        setTimeout(() => {
+            const botBubble = document.createElement("div");
+            botBubble.classList.add("message", "bot");
+            botBubble.textContent = "Here is your AI meal plan!";
+            chatbox.appendChild(botBubble);
+
+            // Scroll to the bottom of the chatbox
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }, 1000);
     }
-  }
-  
+}
