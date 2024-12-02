@@ -23,100 +23,119 @@
 </head>
 <body>
 
-<header>
-    <nav id="navbar">
-        <!-- Logo Link -->
-        <a href="index.html">
-            <img src="Images/logo.png" alt="CalorieCraft Logo" id="logo">
-        </a>
+    <header>
+        <nav id="navbar">
+            <!-- Logo Link -->
+            <a href="index.html">
+                <img src="Images/logo.png" alt="CalorieCraft Logo" id="logo">
+            </a>
 
-        <!-- Page Links -->
-        <ul class="nav-links">
-            <li><a href="meal-planner.html">Meal Planner</a></li>
-            <li><a href="tracking.html">Tracking</a></li>
-        </ul>
-    </nav>
-</header>
+            <!-- Page Links -->
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="meal-planner.html">Meal Planner</a></li>
+                <li><a href="tracking.html" class="active">Tracking</a></li>
+                <li><a href="tracking.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<section>
-    <div class="container tracking-dashboard">
-        <div class="food-tracking">
-            <h1>Log Your Meals</h1>
-            <form>
-                <label for="food-name">Food Name:</label>
-                <input type="text" id="food-name" name="food-name">
-                <label for="calories">Calories:</label>
-                <input type="number" id="calories" name="calories">
-                <label for="carbs">Carbs (g):</label>
-                <input type="number" id="carbs" name="carbs">
-                <label for="protein">Protein (g):</label>
-                <input type="number" id="protein" name="protein">
-                <label for="fat">Fat (g):</label>
-                <input type="number" id="fat" name="fat">
-                <button type="submit">Log Food</button>
-            </form>
+    <section>
+        <h1>Tracking</h1>
+        <div class="container tracking-dashboard">
+            <div class="food">
+
+                <!-- Tracking Form -->
+                <form>
+                    <label for="food-name">Food Name:</label>
+                    <input type="text" id="food-name" name="food-name">
+                    <label for="calories">Calories:</label>
+                    <input type="number" id="calories" name="calories">
+                    <label for="carbs">Carbs (g):</label>
+                    <input type="number" id="carbs" name="carbs">
+                    <label for="protein">Protein (g):</label>
+                    <input type="number" id="protein" name="protein">
+                    <label for="fat">Fat (g):</label>
+                    <input type="number" id="fat" name="fat">
+                    <button type="submit">Add Food</button>
+                </form>
+            </div>
+
+            <!-- Chart Outer Box Container -->
+            <div class="outerBox2">
+                <h1>Dashboard</h1>
+                <!-- Chart Inner Box Containers -->
+                <div class="trackContainer">
+                    <div class="charts-stack">
+                        <h2 class="chartLabel">Calories Remaining</h2>
+                        <div class="tracking-chart-wrapper">
+                            <canvas id="caloriePieChartTracking"></canvas>
+                        </div>
+                    </div>
+                    <script>
+                        // Pie Chart for Calories (Tracking)
+                        const caloriePieChartTracking = new Chart(document.getElementById('caloriePieChartTracking'), {
+                            type: 'doughnut',
+                            data: {
+                                labels: ['Calories Consumed', 'Calories Remaining'],
+                                datasets: [{
+                                    data: [750, 1250],
+                                    backgroundColor: ['#FF6D6D', '#FFF4E7']
+                                }]
+                            },
+                            options: {
+                                cutout: '60%', //Adjust thickness of the doughnut
+                                plugins: {
+                                    //Plugin to add text in the center
+                                    legend: {
+                                        display: false // Hide the legend if needed
+                                    }
+                                }
+                            },
+                            plugins: [{
+                                id: 'centerText',
+                                beforeDraw: (chart) => {
+                                    const { width, height, ctx } = chart;
+                                    ctx.restore();
+                                    const fontSize = (height / 10).toFixed(2);
+                                    ctx.font = `${fontSize}px sans-serif`;
+                                    ctx.textBaseline = 'middle';
+                    
+                                    const text = '1250';
+                                    const textX = Math.round((width - ctx.measureText(text).width) / 2);
+                                    const textY = height / 2;
+                    
+                                    ctx.fillText(text, textX, textY);
+                                    ctx.save();
+                                }
+                            }]
+                        });
+                    </script>
+
+                    <!-- Progress Bars for Macros -->
+                    <div class="progBars">
+                        <p>Carbs</p>
+                        <div class="myProgress">
+                            <div id="bar1" class="bar"></div>
+                        </div>
+                        <p>Protein</p>
+                        <div class="myProgress">
+                            <div id="bar2" class="bar"></div>
+                        </div>
+                        <p>Fat</p>
+                        <div class="myProgress">
+                            <div id="bar3" class="bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="charts-stack">
-            <div class="tracking-chart-wrapper">
-                <canvas id="caloriePieChartTracking"></canvas>
-            </div>
-
-            <div class="tracking-chart-wrapper">
-                <canvas id="weightLineChartTracking"></canvas>
-            </div>
-
-            <div class="tracking-chart-wrapper">
-                <canvas id="macroBarChartTracking"></canvas>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <p>&copy; 2024 Calorie Craft. All rights reserved.</p>
-</footer>
-
-<script>
-    // Pie Chart for Calories (Tracking)
-    const caloriePieChartTracking = new Chart(document.getElementById('caloriePieChartTracking'), {
-        type: 'pie',
-        data: {
-            labels: ['Calories Consumed', 'Calories Remaining'],
-            datasets: [{
-                data: [1200, 800],
-                backgroundColor: ['#36A2EB', '#FF6384']
-            }]
-        }
-    });
-
-    // Line Chart for Weight Progress (Tracking)
-    const weightLineChartTracking = new Chart(document.getElementById('weightLineChartTracking'), {
-        type: 'line',
-        data: {
-            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-            datasets: [{
-                label: 'Weight (lbs)',
-                data: [190, 189, 188, 187, 186],
-                borderColor: '#36A2EB',
-                fill: false
-            }]
-        }
-    });
-
-    // Bar Chart for Macros (Tracking)
-    const macroBarChartTracking = new Chart(document.getElementById('macroBarChartTracking'), {
-        type: 'bar',
-        data: {
-            labels: ['Carbs', 'Protein', 'Fat'],
-            datasets: [{
-                label: 'Macros (g)',
-                data: [230, 110, 90],
-                backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56']
-            }]
-        }
-    });
-</script>
+    <footer>
+        <img src="Images/SocMedIcons.png" alt="Icons" id="Icons">
+        <p>&copy; 2024 Calorie Craft. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
