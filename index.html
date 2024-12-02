@@ -75,6 +75,7 @@
                         <canvas id="caloriePieChart"></canvas>
                     </div>
                     <script>
+
                     //Doughnut Chart for Calories
                     const calorieDoughnutChart = new Chart(document.getElementById('caloriePieChart'), {
                         type: 'doughnut',
@@ -88,13 +89,12 @@
                         options: {
                             cutout: '60%', //Adjust thickness of the doughnut
                             plugins: {
-                                //Plugin to add text in the center
                                 legend: {
-                                    display: false // Hide the legend if needed
+                                    display: false
                                 }
                             }
                         },
-                        plugins: [{
+                        plugins: [{ //Plugin to add text in the center
                             id: 'centerText',
                             beforeDraw: (chart) => {
                                 const { width, height, ctx } = chart;
@@ -115,6 +115,7 @@
                     </script>
                 </div>
                 <div>
+
                     <!-- Progress Bars for Macros -->
                     <div class="progBars">
                         <p>Carbs</p>
@@ -133,6 +134,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- Introduction Message -->
         <div class="Intro">
             <div class="welcome-message">
                 <p>Welcome to CalorieCraft!</p>
