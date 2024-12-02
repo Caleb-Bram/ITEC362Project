@@ -23,146 +23,136 @@
 </head>
 <body>
 
-<header>
-    <nav id="navbar">
-        <!-- Logo Link -->
-        <a href="index.html">
-            <img src="Images/logo.png" alt="CalorieCraft Logo" id="logo">
-        </a>
+    <header>
+        <nav id="navbar">
+            <!-- Logo Link -->
+            <a href="index.html">
+                <img src="Images/logo.png" alt="CalorieCraft Logo" id="logo">
+            </a>
 
-        <!-- Page Links -->
-        <ul class="nav-links">
-            <li><a href="meal-planner.html">Meal Planner</a></li>
-            <li><a href="tracking.html">Tracking</a></li>
-        </ul>
-    </nav>
-</header>
-
-<section>
-    <div class="container">
-        <h1>Daily Overview</h1>
-        <div class="chart-row home-chart-row">
-            <div class="home-chart-wrapper">
-                <canvas id="caloriePieChart"></canvas>
-            </div>
-            <div class="home-chart-wrapper">
-                <canvas id="weightLineChart"></canvas>
-            </div>
-            <div class="home-chart-wrapper">
-                <canvas id="macroBarChart"></canvas>
-            </div>
-        </div>
-        <div class="welcome-message"></div>
-            <h2>Welcome to CalorieCraft!</h2>
-            <p>Your Personalized AI-Driven Meal Planner and Calorie Tracker</p>
-        <div class="info-message">
-            <h3>Achieving your health goals should be simple, intuitive, and effective.</h3>
-            <p>Whether you're aiming to lose weight, gain muscle, or maintain a balanced lifestyle, our AI-powered platform provides you with customized meal plans and tracks your calorie intake, all in one place. With CalorieCraft, you can:</p>
-            <ul>
-                <li>Generate personalized meal plans based on your dietary preferences, health goals, and calorie requirements.</li>
-                <li>Track your daily caloric intake easily and efficiently, ensuring you stay on track to meet your objectives.</li>
-                <li>Receive AI-based suggestions tailored to your progress and dietary needs.</li>
+            <!-- Page Links -->
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="meal-planner.html">Meal Planner</a></li>
+                <li><a href="tracking.html">Tracking</a></li>
+                <li><a href="index.html">About</a></li>
             </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h1>Overview</h1>
+
+        <!-- Chart Outer Box Container -->
+        <div class="outerBox1">
+
+            <!-- Chart Inner Box Containers -->
+            <div class="homeContainer">
+                <div>
+                    <h2 class="chartLabel">Weight Progress</h2>
+                    <div class="home-chart-wrapper">
+                        <canvas id="weightLineChart"></canvas>
+                    </div>
+                    <script>
+                        // Line Chart for Weight Progress
+                        const weightLineChart = new Chart(document.getElementById('weightLineChart'), {
+                            type: 'line',
+                            data: {
+                                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+                                datasets: [{
+                                    label: '(Lbs)',
+                                    data: [192, 192.5, 191.5, 190, 189.5],
+                                    borderColor: '#black',
+                                    fill: false
+                                }]
+                            }
+                        });
+                    </script>
+                </div>
+                <div>
+                    <h2 class="chartLabel">Calories Remaining</h2>
+                    <div class="home-chart-wrapper">
+                        <canvas id="caloriePieChart"></canvas>
+                    </div>
+                    <script>
+                    //Doughnut Chart for Calories
+                    const calorieDoughnutChart = new Chart(document.getElementById('caloriePieChart'), {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Calories Consumed', 'Calories Remaining'],
+                            datasets: [{
+                                data: [750, 1250],
+                                backgroundColor: ['#FF6D6D', '#FFF4E7']
+                            }]
+                        },
+                        options: {
+                            cutout: '60%', //Adjust thickness of the doughnut
+                            plugins: {
+                                //Plugin to add text in the center
+                                legend: {
+                                    display: false // Hide the legend if needed
+                                }
+                            }
+                        },
+                        plugins: [{
+                            id: 'centerText',
+                            beforeDraw: (chart) => {
+                                const { width, height, ctx } = chart;
+                                ctx.restore();
+                                const fontSize = (height / 10).toFixed(2);
+                                ctx.font = `${fontSize}px sans-serif`;
+                                ctx.textBaseline = 'middle';
+                
+                                const text = '1250';
+                                const textX = Math.round((width - ctx.measureText(text).width) / 2);
+                                const textY = height / 2;
+                
+                                ctx.fillText(text, textX, textY);
+                                ctx.save();
+                            }
+                        }]
+                    });
+                    </script>
+                </div>
+                <div>
+                    <!-- Progress Bars for Macros -->
+                    <div class="progBars">
+                        <p>Carbs</p>
+                        <div class="myProgress">
+                            <div id="bar1" class="bar"></div>
+                        </div>
+                        <p>Protein</p>
+                        <div class="myProgress">
+                            <div id="bar2" class="bar"></div>
+                        </div>
+                        <p>Fat</p>
+                        <div class="myProgress">
+                            <div id="bar3" class="bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+        <div class="Intro">
+            <div class="welcome-message">
+                <p>Welcome to CalorieCraft!</p>
+                <p>Your Personalized AI-Driven Meal Planner and Calorie Tracker</p>
+            </div>
+            <div class="info-message">
+                <p>Achieving your health goals should be simple, intuitive, and effective. Whether you're aiming to lose weight, gain muscle, or maintain a balanced lifestyle, our AI-powered platform provides you with customized meal plans and tracks your calorie intake, all in one place. With CalorieCraft, you can:</p>
+                <ul>
+                    <li>Generate personalized meal plans based on your dietary preferences, health goals, and calorie requirements.</li>
+                    <li>Track your daily caloric intake easily and efficiently, ensuring you stay on track to meet your objectives.</li>
+                    <li>Receive AI-based suggestions tailored to your progress and dietary needs.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-<footer>
-    <p>&copy; 2024 Calorie Craft. All rights reserved.</p>
-</footer>
-
-<script>
-//Doughnut Chart for Calories
-const calorieDoughnutChart = new Chart(document.getElementById('caloriePieChart'), {
-    type: 'doughnut',
-    data: {
-        labels: ['Calories Consumed', 'Calories Remaining'],
-        datasets: [{
-            data: [750, 1250],
-            backgroundColor: ['#FF6D6D', '#FFF4E7']
-        }]
-    },
-    options: {
-        cutout: '60%', //Adjust thickness of the doughnut
-        plugins: {
-            //Plugin to add text in the center
-            legend: {
-                display: false // Hide the legend if needed
-            }
-        }
-    },
-    plugins: [{
-        id: 'centerText',
-        beforeDraw: (chart) => {
-            const { width, height, ctx } = chart;
-            ctx.restore();
-            const fontSize = (height / 10).toFixed(2);
-            ctx.font = `${fontSize}px sans-serif`;
-            ctx.textBaseline = 'middle';
-
-            const text = '1250';
-            const textX = Math.round((width - ctx.measureText(text).width) / 2);
-            const textY = height / 2;
-
-            ctx.fillText(text, textX, textY);
-            ctx.save();
-        }
-    }]
-});
-
-
-    // Line Chart for Weight Progress
-    const weightLineChart = new Chart(document.getElementById('weightLineChart'), {
-        type: 'line',
-        data: {
-            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-            datasets: [{
-                label: 'Weight Progress',
-                data: [192, 192.5, 191.5, 190, 189.5],
-                borderColor: '#black',
-                fill: false
-            }]
-        }
-    });
-
-    // Bar Chart for Macros
-    const macroBarChart = new Chart(document.getElementById('macroBarChart'), {
-    type: 'bar',
-    data: {
-        labels: ['Carbs', 'Protein', 'Fat'],
-        datasets: [{
-            label: 'Macros (g)',
-            data: [250, 120, 80],
-            backgroundColor: ['#22A720', '#EE4F4F', '#E7A805'],
-            borderRadius: 30 // Rounded corners
-        }]
-    },
-    options: {
-        indexAxis: 'y', // Makes the chart horizontal
-        scales: {
-            x: {
-                beginAtZero: true,
-                grid: {
-                    display: false
-                },
-                ticks: {
-                    display: false
-                }
-            },
-            y: {
-                grid: {
-                    display: false
-                }
-            }
-        },
-        plugins: {
-            legend: {
-                display: false
-            }
-        }
-    }
-});
-</script>
+    <footer>
+        <img src="Images/SocMedIcons.png" alt="Icons" id="Icons">
+        <p>&copy; 2024 Calorie Craft. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
