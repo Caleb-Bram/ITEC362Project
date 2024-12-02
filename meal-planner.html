@@ -21,69 +21,116 @@
 </script>
 </head>
 <body>
+    
+    <header>
+        <nav id="navbar">
+            <!-- Logo Link -->
+            <a href="index.html">
+                <img src="Images/logo.png" alt="CalorieCraft Logo" id="logo">
+            </a>
 
-<header>
-    <nav id="navbar">
-        <!-- Logo Link -->
-        <a href="index.html">
-            <img src="Images/logo.png" alt="CalorieCraft Logo" id="logo">
-        </a>
+            <!-- Page Links -->
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="meal-planner.html" class="active">Meal Planner</a></li>
+                <li><a href="tracking.html">Tracking</a></li>
+                <li><a href="meal-planner.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <!-- Page Links -->
-        <ul class="nav-links">
-            <li><a href="meal-planner.html">Meal Planner</a></li>
-            <li><a href="tracking.html">Tracking</a></li>
-        </ul>
-    </nav>
-</header>
-
-<section>
-    <div class="container">
+    <section>
         <h1>CraftGPT</h1>
-        <p>Use the AI chatbox below to generate meal plans based on your preferences:</p>
-        
-        <!-- AI Chatbox Placeholder -->
-        <div class="chatbox">
+        <div class="MP-container">
+            <div class="Instructions">
+                <p>How It Works:</p>
+                <ol>
+                    <li>Set Your Goals</li>
+                    <li>Enter Your Dietary Preferences</li> 
+                    <li>Generate A Plan</li>
+                </ol>
+            </div>
+            
+            <!-- AI Chatbox -->
             <div class="chat-container">
-                <div id="chatbox" class="chatbox">
-                  <!-- Messages will appear here -->
+                <div id="chatbox" class="chat-messages">
+                    <!-- Messages will appear here -->
                 </div>
                 <div class="input-area">
-                  <input type="text" id="messageInput" placeholder="Ask AI" />
-                  <button onclick="sendMessage()">Generate</button>
+                    <input type="text" id="messageInput" placeholder="Ask AI">
+                    <button onclick="sendMessage()">Generate</button>
                 </div>
             </div>
             <script src="script.js"></script>
+
+            <!-- Preference Form -->
+            <div class="diet">
+                <form>
+                    <div class="diet-group">
+                        <label for="cal-goal">Enter Calorie Goal</label>
+                        <input type="text" id="cal-goal" name="cal-goal" placeholder=" " required>
+                    </div>
+                    <label for="diet-type">Diet Type</label>
+                    <div class="diet-group">
+                        <select id="diet-type" name="diet-type" required>
+                            <option value="" disabled selected>Select Diet Type</option>
+                            <option value="balanced">Balanced</option>
+                            <option value="low-carb">Low Carb</option>
+                            <option value="high-protein">High Protein</option>
+                            <option value="low-fat">Low Fat</option>
+                        </select>
+                    </div>
+                    <label>Macro Percentages</label>
+                    <div class="macper">
+                        <div class="diet-group">
+                            <label for="carbs%">Carbs</label>
+                            <input type="number" id="carbs%" name="carbs%" required placeholder=" " step="1" min="0" max="100">
+                        </div>
+                        <div class="diet-group">
+                            <label for="protein%">Protein</label>
+                            <input type="number" id="protein%" name="protein%" required placeholder=" " step="1" min="0" max="100">
+                        </div>
+                        <div class="diet-group">
+                            <label for="fat%">Fat</label>
+                            <input type="number" id="fat%" name="fat%" required placeholder=" " step="1" min="0" max="100">
+                        </div>
+                    </div>
+                    <button class="save-btn">Save</button>
+                </form>
+            </div>
         </div>
-        
-        
+    </section>
+
+    <section class="Page2">
         <!-- Sample Meal Plan Overview -->
         <div class="meal-plan-overview">
-            <h2>Your Plan:</h2>
-            <img src="Images/Yogurt.jpg" alt="Yogurt" id="foodImgs">
-            <img src="Images/Chicken.jpg" alt="Chicken" id="foodImgs">
-            <img src="Images/Salmon.jpg" alt="Salmon" id="foodImgs">
+            <h1>Your Plan:</h1>
+            <div class="foodImgs">
+                <img src="Images/Yogurt.jpg" alt="Yogurt" id="Yog">
+                <img src="Images/Chicken.jpg" alt="Chicken" id="Chi">
+                <img src="Images/Salmon.jpg" alt="Salmon" id="Sal">
+            </div>
             <ul>
                 <li class="foodItm">
-                    <strong>Breakfast:</strong> Oatmeal with fruit (300 kcal)
+                    Breakfast: Greek yogurt with mixed berries and a sprinkle of Chia seeds – 250 calories.
                 </li>
                 <li class="foodItm">
-                    <strong>Lunch:</strong> Grilled chicken salad (500 kcal)
+                    Lunch: Grilled chicken salad with a variety of veggies and a light vinaigrette dressing – 400 calories.
                 </li>
                 <li class="foodItm">
-                    <strong>Snack:</strong> Greek yogurt with almonds (200 kcal)
+                    Dinner: Baked salmon with roasted asparagus and quinoa – 550 calories.
                 </li>
                 <li class="foodItm">
-                    <strong>Dinner:</strong> Salmon with quinoa and vegetables (600 kcal)
+                    Snack: Apple slices with almond butter – 150 calories.
                 </li>
             </ul>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer>
-    <p>&copy; 2024 CalorieCraft. All rights reserved.</p>
-</footer>
+    <footer>
+        <img src="Images/SocMedIcons.png" alt="Icons" id="Icons">
+        <p>&copy; 2024 Calorie Craft. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
