@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('Background1.jpeg');
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('Images/Background1.jpeg');
     background-size: cover;
     background-attachment: fixed;
 }
@@ -17,21 +17,10 @@ h2 {
     font-size: 15pt;
 }
 
-/* Food List */
-.foodItm {
-    display: flex; /* Aligns items horizontally */
-    align-items: center; /* Vertically aligns items */
-    margin-bottom: 15px; /* Adds space between list items */
+section {
+    padding: 60px;
 }
 
-#foodImgs {
-    display: flex; /* Aligns items horizontally */
-    width: 160px;
-    height: 160px;
-    border-radius: 10px;
-    margin-right: 50px;
-}
-  
 /* Navbar styling */
 #navbar {
     display: flex;
@@ -44,6 +33,11 @@ h2 {
     width: 90px;
     height: auto;
     margin-right: 50px;
+    transition: 0.2s ease;
+}
+
+#logo:hover {
+    width: 100px;
 }
 
 .nav-links {
@@ -56,6 +50,7 @@ h2 {
 
 .nav-links li {
     margin-right: 50px;
+    transition: 0.2s ease;
 }
 
 .nav-links li a {
@@ -63,137 +58,408 @@ h2 {
     text-decoration: none;
     font-size: 18px;
     font-family: monospace;
+    padding: 5px 10px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: 0.2s ease;
 }
 
 .nav-links li a:hover {
     text-decoration: underline orangered;
     color: red;
+    font-size: 20px;
 }
 
-section {
-    padding: 60px;
+.nav-links li:hover {
+    margin-right: 40px;
 }
 
-/* Home Page Chart Styles */
-.home-chart-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: 20px 0;
+.nav-links li a.active {
+    background-color: #fdd3d0;
 }
 
-.home-chart-wrapper {
-    width: 30%;
-    padding: 10px;
+/*Progress Bars */
+.progBars{
+    justify-content: center;
 }
 
-.home-chart-wrapper canvas {
-    width: 300px !important;
-    height: 300px !important; /* Sets a specific height for home charts */
-}
-
-/* Tracking Page Chart Styles */
-.tracking-dashboard {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    height: 1000px;
-}
-
-.food-tracking {
-    width: 55%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.food-tracking form {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.food-tracking input, .food-tracking button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    font-size: 16px;
-}
-
-.charts-stack {
-    display: flex;
-    flex-direction: column;
-    width: 35%;
-}
-
-.tracking-chart-wrapper {
-    width: 300px;
-    padding: 10px;
-    flex-grow: 1;
-    box-sizing: border-box;
-}
-
-.tracking-chart-wrapper canvas {
-    width: 300px !important;
-    height: 300px !important; /* Ensures all tracking charts are equal heights */
-}
-  
-/* Chatbox */
-.chat-container {
-    width: 100%;
-    max-width: 400px; /* Adjust width as needed */
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+.myProgress {
+    width: 350px;
+    background-color: white;
+    border-radius: 15px;
     overflow: hidden;
-  }
+    margin-bottom: 10px;
+}
   
-  .chat-messages {
-    height: 300px; /* Set the desired height */
-    overflow-y: auto; /* Enable vertical scrolling */
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-bottom: 1px solid #ddd;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-  }
+.bar {
+    height: 35px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    border-radius: 15px;
+}
   
-  .input-area {
-    display: flex;
-    padding: 10px;
-    background-color: #fff;
-  }
+#bar1 {background-color: #22A720; width: 30%;}
+#bar2 {background-color: #EE4F4F; width: 50%;}
+#bar3 {background-color: #E7A805; width: 70%;}
+
+/* Home Page */
+
+    /* Introduction */
+    .Intro {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 100px;
+        padding: 60px;
+    }
+
+    .welcome-message, .info-message {
+        width: 30%;
+        word-wrap: break-word;
+    }
+
+    .welcome-message {
+        font-size: 24pt;
+    }
+
+    .info-message {
+        font-size: 14pt;
+    }
+
+    /* Home Chart Containers */
+    .homeContainer {
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .homeContainer > div {
+        text-align: center;
+        background: #DCDCDC;
+        box-shadow: 5px 5px 2px darkgray inset;
+        padding: 5px 30px;
+        height: 310px;
+    }
+
+    .outerBox1 {
+        margin: auto;
+        width: 80%;
+        background-color: #F6F6F6;
+        border: 2px solid darkgray;
+        padding: 15px;
+        box-shadow: 5px 5px 2px darkgray;
+    }
+
+    /* Home Page Chart Styles */
+    .home-chart-wrapper {
+        padding: 0px;
+    }
+
+    .home-chart-wrapper canvas {
+        height: 250px !important;
+    }
+
+/* Meal-Planner Page */
+    
+    /* Food List */
+    .foodItm {
+        font-size: 32px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 160px;
+    }
+
+    #Yog, #Chi, #Sal {
+        display: flex;
+        width: 220px;
+        height: 220px;
+        border-radius: 10px;
+        margin-right: 50px;
+        margin-bottom: 20px;
+    }
+
+    .foodImgs {
+        float: left;
+        margin-left: 110px;
+    }
   
-  .input-area input[type="text"] {
-    flex-grow: 1;
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 10px;
-  }
-  
-  .input-area button {
-    padding: 8px 16px;
-    font-size: 14px;
-    background-color: black;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .input-area button:hover {
-    background-color: #3e4042;
-  }    
+    /* Intstructions */
+    .Instructions {
+        width: 400px;
+        font-size: 24pt;
+        margin-top: 50px;
+        margin-left: 100px;
+    }
+
+    .MP-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .MP-container > div {
+        justify-content: space-evenly;
+    }
+
+    /* Meal-Planner Form */
+    .diet {
+        gap: 10px;
+        width: 400px;
+        display: flex;
+        align-items: center;
+        margin-right: 100px;
+    }
+
+    .diet form {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .diet-group {
+        margin-bottom: 15px;
+        position: relative;
+    }
+
+    .macper {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .diet-group input, #diet-type {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .diet-group label {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        font-size: 14px;
+        color: #aaa;
+        transition: all 0.3s ease;
+        pointer-events: none;
+    }
+
+    .diet-group:focus-within label {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .save-btn {
+        width: 60px;
+        display: flex;
+        justify-content: center;
+        transition: 0.2s ease;
+        padding: 8px 16px;
+        font-size: 14px;
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .save-btn:hover {
+        background: #3e4042;
+    }
+
+    /* Chatbox */
+    .chat-container {
+        width: 600px;
+        height: 400px;
+        background-color: white;
+        margin: 0 auto;
+        display: flex;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        overflow: hidden;
+        gap: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .chat-messages {
+        flex-grow: 1;
+        overflow-y: auto;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .message {
+        max-width: 40%;
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 15px;
+        font-size: 14px;
+        line-height: 1.4;
+        word-wrap: break-word;
+        display: flex;
+    }
+
+    .message.user {
+        background-color: lightgrey;
+        align-self: flex-end;
+    }
+
+    .message.bot {
+        background-color: rgb(250, 191, 168);
+        align-self: flex-start;
+    }
+    
+    .input-area {
+        display: flex;
+        background-color: white;
+        align-self: center;
+        bottom: 0;
+        padding: 5px;
+    }
+    
+    .input-area input[type="text"] {
+        flex-grow: 1;
+        padding: 8px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-right: 10px;
+    }
+    
+    .input-area button {
+        padding: 8px 16px;
+        font-size: 14px;
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+    
+    .input-area button:hover {
+        background-color: #3e4042;
+    }
+
+    /* Background2 */
+    .Page2 {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('Images/Background2.webp');
+        background-size: cover;
+        background-attachment: fixed;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+/* Tracking Page */
+
+    /* Tracking Chart Containers */
+    .outerBox2 {
+        margin: auto;
+        height: 75%;
+        background-color: #F6F6F6;
+        border: 2px solid darkgray;
+        padding: 15px;
+        box-shadow: 5px 5px 2px darkgray;
+    }
+
+    .trackContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .trackContainer > div {
+        text-align: center;
+        background: #DCDCDC;
+        box-shadow: 5px 5px 2px darkgray inset;
+        padding: 5px 30px;
+        width: 350px;
+    }
+
+    /* Tracking Form */
+    label {
+        font-size: 20px;
+    }
+
+    .food {
+        width: 55%;
+    }
+
+    .food form {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .food input, .food button {
+        padding: 10px;
+        font-size: 32px;
+        border-radius: 12px;
+    }
+
+    .food button {
+        width: 160px;
+        display: flex;
+        justify-content: center;
+        transition: 0.2s ease;
+        padding: 8px 16px;
+        font-size: 24px;
+        background-color: black;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .food button:hover {
+        background: #3e4042;
+    }
+
+    /* Tracking Page Chart Styles */
+    .tracking-dashboard {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        height: 1000px;
+    }
+
+    .charts-stack {
+        width: 35%;
+    }
+
+    .tracking-chart-wrapper canvas {
+        width: 300px !important;
+        height: 300px !important;
+    }
+    
+    
 
 /* Footer */
 footer {
     background-color: white;
     color: black;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 30px;
+    position: relative;
+    text-align: center;
+}
+
+footer p {
+    flex: 1;
+    text-align: center;
+}
+
+#Icons {
+    height: 70px;
+    position: absolute;
+    left: 30px;
 }
