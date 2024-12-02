@@ -235,22 +235,6 @@ section {
         box-sizing: border-box;
     }
 
-    .diet-group label {
-        position: absolute;
-        top: 50%;
-        left: 10px;
-        transform: translateY(-50%);
-        font-size: 14px;
-        color: #aaa;
-        transition: all 0.3s ease;
-        pointer-events: none;
-    }
-
-    .diet-group:focus-within label {
-        opacity: 0;
-        visibility: hidden;
-    }
-
     .save-btn {
         width: 60px;
         display: flex;
